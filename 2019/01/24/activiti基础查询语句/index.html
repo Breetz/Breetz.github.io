@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Stay hungry Stay foolish">
+<meta name="description" content="总结关于activiti的一些基础查询语句。  启动流程 1ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(&quot;processDefinitionKey&quot;, &quot;userId&quot;, new HashMap&amp;lt;&amp;gt;());  查询代办 1List&amp;lt;Task&amp;gt; tasks = taskS">
 <meta name="keywords" content="Stay hungry Stay foolish">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="activiti基础查询语句">
+<meta property="og:url" content="http://yoursite.com/2019/01/24/activiti基础查询语句/index.html">
 <meta property="og:site_name" content="Stay hungry Stay foolish">
-<meta property="og:description" content="Stay hungry Stay foolish">
+<meta property="og:description" content="总结关于activiti的一些基础查询语句。  启动流程 1ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(&quot;processDefinitionKey&quot;, &quot;userId&quot;, new HashMap&amp;lt;&amp;gt;());  查询代办 1List&amp;lt;Task&amp;gt; tasks = taskS">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-23T06:47:15.965Z">
+<meta property="og:updated_time" content="2019-01-24T09:00:16.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="Stay hungry Stay foolish">
+<meta name="twitter:title" content="activiti基础查询语句">
+<meta name="twitter:description" content="总结关于activiti的一些基础查询语句。  启动流程 1ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(&quot;processDefinitionKey&quot;, &quot;userId&quot;, new HashMap&amp;lt;&amp;gt;());  查询代办 1List&amp;lt;Task&amp;gt; tasks = taskS">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/24/activiti基础查询语句/">
 
 
 
 
 
-  <title>categories | Stay hungry Stay foolish</title>
+  <title>activiti基础查询语句 | Stay hungry Stay foolish</title>
   
 
 
@@ -263,40 +263,242 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/activiti基础查询语句/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bin Xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay hungry Stay foolish">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                暂无分类
-            </div>
-            <div class="category-all">
+          <h1 class="post-title" itemprop="name headline">activiti基础查询语句</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-            </div>
-          </div>
-        
-      </div>
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T16:35:06+08:00">
+                2019-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>总结关于activiti的一些基础查询语句。</p>
+<ol>
+<li><p>启动流程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(<span class="string">"processDefinitionKey"</span>, <span class="string">"userId"</span>, <span class="keyword">new</span> HashMap&lt;&gt;());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询代办</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Task&gt; tasks = taskService.createTaskQuery().taskAssignee(<span class="string">""</span>).list();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询已办</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;HistoricTaskInstance&gt; historicTaskInstances = historyService.createHistoricTaskInstanceQuery()</span><br><span class="line">        .taskAssignee(<span class="string">"userId"</span>)</span><br><span class="line">        .finished()</span><br><span class="line">        .desc()</span><br><span class="line">        .list();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>委托任务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskService.delegateTask(<span class="string">"taskId"</span>, <span class="string">"userId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>签收任务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskService.claim(<span class="string">"taskId"</span>, <span class="string">"userId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取消签收任务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskService.unclaim(<span class="string">"taskId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给任务添加变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskService.setVariableLocal(<span class="string">"taskId"</span>, <span class="string">"key"</span>, <span class="string">"value"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>办理任务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskService.complete(<span class="string">"taskId"</span>, <span class="keyword">new</span> HashMap&lt;&gt;());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加批注</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Comment comment = taskService.addComment(<span class="string">"taskId"</span>, <span class="string">"processInstanceId"</span>, <span class="string">"complete"</span>, <span class="string">"办理意见"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除任务的候选用户</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskService.deleteCandidateUser(<span class="string">"taskId"</span>, <span class="string">"userId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加任务的候选用户</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskService.addCandidateUser(<span class="string">"taskId"</span>, <span class="string">"userId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置任务的参与者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskService.setAssignee(<span class="string">"taskId"</span>, <span class="string">"userId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取任务的所有候选用户和参与者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;IdentityLink&gt; identityLinkList = taskService.getIdentityLinksForTask(<span class="string">"taskId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取历史实例信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery()</span><br><span class="line">        .processInstanceId(<span class="string">"processInstanceId"</span>).singleResult();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询流程历史活动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;HistoricActivityInstance&gt; historicActivityInstances = processEngine.getHistoryService()</span><br><span class="line">        .createHistoricActivityInstanceQuery()</span><br><span class="line">        .processInstanceId(<span class="string">"processInstanceId"</span>)</span><br><span class="line">        .orderByHistoricActivityInstanceEndTime()</span><br><span class="line">        .finished()</span><br><span class="line">        .desc()</span><br><span class="line">        .list();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>历史中查询任务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HistoricTaskInstance historicTaskInstance = historyService</span><br><span class="line">        .createHistoricTaskInstanceQuery().taskId(<span class="string">"taskId"</span>)</span><br><span class="line">        .singleResult();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取流程启动者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String startUserId = historyService.createHistoricProcessInstanceQuery()</span><br><span class="line">        .processInstanceId(<span class="string">"processInstanceId"</span>).singleResult().getStartUserId();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取流程定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ProcessDefinitionEntity processDefinitionEntity = (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService)</span><br><span class="line">        .getDeployedProcessDefinition(<span class="string">"processDefinitionId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据流程定义和节点ID获取节点信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ActivityImpl activity = processDefinitionEntity.findActivity(<span class="string">"activityId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取BpmnModel</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BpmnModel bm = repositoryService.getBpmnModel(<span class="string">"processDefinitionId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据流程定义获取XML文件并转换为BpmnModel</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">InputStream xmlIs = repositoryService.getResourceAsStream(processDefinitionEntity.getDeploymentId(), processDefinitionEntity.getResourceName());</span><br><span class="line">BpmnModel bpmnModel = <span class="keyword">new</span> BpmnXMLConverter().convertToBpmnModel(<span class="keyword">new</span> InputStreamSource(xmlIs), <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证BpmnModel是不是正确的XML文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ProcessValidatorFactory processValidatorFactory = <span class="keyword">new</span> ProcessValidatorFactory();</span><br><span class="line">ProcessValidator defaultProcessValidator = processValidatorFactory.createDefaultProcessValidator();</span><br><span class="line">List&lt;ValidationError&gt; validate = defaultProcessValidator.validate(bpmnModel);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询流程定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ProcessDefinition&gt; processDefinitions = repositoryService.createProcessDefinitionQuery()</span><br><span class="line">        .latestVersion()</span><br><span class="line">        .list();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询流程部署信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Deployment deploymentTime = repositoryService.createDeploymentQuery()</span><br><span class="line">        .deploymentId(processDefinitions.get(<span class="number">0</span>).getDeploymentId()).singleResult();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>激活流程定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repositoryService.activateProcessDefinitionById(<span class="string">"processDefinitionId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂起流程定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repositoryService.suspendProcessDefinitionById(<span class="string">"processDefinitionId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除流程定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repositoryService.deleteDeployment(<span class="string">"processDefinitionId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据模型生成图片</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DefaultProcessDiagramGenerator defaultProcessDiagramGenerator = <span class="keyword">new</span> DefaultProcessDiagramGenerator();</span><br><span class="line">InputStream in = defaultProcessDiagramGenerator.generateDiagram(bm, <span class="string">"png"</span>, <span class="string">"宋体"</span>, <span class="string">"宋体"</span>, <span class="string">"宋体"</span>, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询所有的Model</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Model&gt; models = repositoryService.createModelQuery()</span><br><span class="line">    .deployed()</span><br><span class="line">    .orderByLastUpdateTime()</span><br><span class="line">    .desc()</span><br><span class="line">    .list();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>激活流程实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runtimeService.activateProcessInstanceById(<span class="string">"processInstanceId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂起流程实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runtimeService.suspendProcessInstanceById(<span class="string">"processInstanceId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除流程定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runtimeService.deleteProcessInstance(<span class="string">"processInstanceId"</span>, <span class="string">"删除原因"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取流程实例变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;HistoricVariableInstance&gt; hisVariable = historyService.createHistoricVariableInstanceQuery()</span><br><span class="line">        .processInstanceId(<span class="string">"processInstanceId"</span>).list();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/23/copyfortest/" rel="next" title="为了测试网上抄袭的Ant Design">
+                <i class="fa fa-chevron-left"></i> 为了测试网上抄袭的Ant Design
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
